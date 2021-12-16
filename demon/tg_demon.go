@@ -1,24 +1,12 @@
 package demon
 
-import (
-	"fmt"
-	"github.com/nviktorovich/NoticerBot/service"
-	"os"
-)
+import "github.com/nviktorovich/NoticerBot/service"
 
-func TelegramNoticer(id int64, text string) {
-	notice := service.NewNotice()
-	notice.SetRecipientID(id)
-	notice.SetText(text)
+func BotDrive(bot *service.TelegramBot, text string, rID int64) error {
 
-	bot, err := service.NewTgBot("???")
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+	notice := service.NewNotice(text, rID)
+	if err := bot.Send(*notice); err != nil {
+		return err
 	}
-
-	if err = bot.Send(*notice); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	return nil
 }

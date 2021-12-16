@@ -10,8 +10,11 @@ type Notice struct {
 	RecipientID int64
 }
 
-func NewNotice() *Notice {
-	return new(Notice)
+func NewNotice(text string, rID int64) *Notice {
+	return &Notice{
+		Text:        text,
+		RecipientID: rID,
+	}
 } // создание нового извещение
 
 func (n *Notice) SetText(t string) {
