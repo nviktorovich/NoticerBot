@@ -1,0 +1,13 @@
+clients:
+  telegram:
+    mode: true
+    api_key: "123456789:qwertyuiopasdfghjkzxcvbnm"
+    chat_id: -12123123123
+  sms:
+    mode: false
+    phone_number: 89222222222
+  mail:
+    mode: false
+    adress: "recipient@email.com"
+    port: 22
+    

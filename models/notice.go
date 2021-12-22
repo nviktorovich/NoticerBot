@@ -1,19 +1,19 @@
-package service
+package models
 
 type Noticer interface {
 	SetText(t string)
-	SetRecipientID(r int64)
+	SetRecipientID(r interface{})
 }
 
 type Notice struct {
 	Text        string
-	RecipientID int64
+	RecipientID interface{}
 }
 
-func NewNotice(text string, rID int64) *Notice {
+func NewNotice(text string, rID interface{}) *Notice {
 	return &Notice{
-		Text:        text,
-		RecipientID: rID,
+		text,
+		rID,
 	}
 } // создание нового извещение
 
@@ -21,6 +21,6 @@ func (n *Notice) SetText(t string) {
 	n.Text = t
 } // метод для передачи текста сообщения для извещения
 
-func (n *Notice) SetRecipientID(r int64) {
+func (n *Notice) SetRecipientID(r interface{}) {
 	n.RecipientID = r
 } // метод для передачи идентификатора адресата для извещения

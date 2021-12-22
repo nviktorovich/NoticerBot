@@ -1,6 +1,9 @@
-package service
+package transports
 
-import tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+import (
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"sitemon/models"
+)
 
 type TelegramBot struct {
 	engine  *tgbotapi.BotAPI
@@ -22,8 +25,8 @@ func NewTgBot(token string) (*TelegramBot, error) {
 	}, nil
 }
 
-func (bot *TelegramBot) Send(notice Notice) error {
-	msg := tgbotapi.NewMessage(notice.RecipientID, notice.Text)
+func (bot *TelegramBot) Send(notice models.Notice) error {
+	msg := tgbotapi.NewMessage(notice.RecipientID.(int64), notice.Text)
 	if _, err := bot.engine.Send(msg); err != nil {
 		return err
 	}
